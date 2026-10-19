@@ -1,27 +1,14 @@
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "eu-central-1"
-}
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket_prefix = "terraform-s3-learning-"
+  bucket_prefix = var.bucket_prefix
 
   tags = {
     Name        = "My-First-S3-Bucket"
-    Environment = "Development"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
-
 resource "aws_s3_bucket_public_access_block" "security" {
   bucket = aws_s3_bucket.my_bucket.id
 
@@ -37,8 +24,4 @@ resource "aws_s3_bucket_versioning" "versioning" {
   versioning_configuration {
     status = "Enabled"
   }
-}
-
-output "bucket_name" {
-  value = aws_s3_bucket.my_bucket.bucket
 }
