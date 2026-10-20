@@ -1,5 +1,5 @@
 # AWS S3 Infrastructure with Terraform
-
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 A simple Infrastructure as Code (IaC) project that provisions and manages a secure Amazon S3 bucket using **HashiCorp Terraform**.
 
 The project demonstrates core Terraform concepts, AWS resource management, security configuration, and infrastructure automation.
